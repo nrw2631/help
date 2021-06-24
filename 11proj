@@ -1,0 +1,70 @@
+package edu.seminolestate.manageparts;
+
+
+/*
+ * Nick Wetherington
+ * 06/22/2021
+ * Ch 11 Project (Ver 1)
+ * The purpose of this assignment is to use inheritance, overridden methods, and polymorphism. 
+ * In this application you will create a hierarchy of classes modeling a company that produces and sells parts
+ */
+
+
+public class Part {
+	
+	private int partID;
+	private String partDescription;
+	private double partSellPrice;
+	public static final int DEFAULT_ID = 0;
+	public static final String DEFAULT_DESCRIPTION = "no part description";
+	public static final double DEFAULT_SELL_PRICE = 0;
+
+	public Part (int partID) {
+		this.partID = DEFAULT_ID;
+}
+	
+	public Part (int partID, String partDescription, double newPartSellPrice) {
+		this.partID = partID;
+		this.partDescription = partDescription;
+		this.partSellPrice = newPartSellPrice;
+		
+	}
+	public double getTotalCost(){
+		return 0;
+	}
+	
+	public int getPartID() {
+		return partID;
+	}
+	
+	public String getPartDescription() {
+		return partDescription;
+	}
+	
+	public double getPartSellPrice() {
+		return partSellPrice;
+	}
+	
+	public void setPartID(int newPartID) {
+		if ( newPartID >= 0 )
+		partID = newPartID;
+	}
+	
+	public void setPartDescription(String newPartDescription) {
+		if (newPartDescription != null && newPartDescription.length() > 0)
+		partDescription = newPartDescription;
+	}
+	
+	public void setPartSellPrice(double newPartSellPrice) {
+		if ( newPartSellPrice >=0 )
+			partSellPrice = newPartSellPrice;
+	}
+	
+	@Override
+	public String toString() {
+		return "partID=" + partID + "," + "partDescription="+ partDescription 
+				+ "," + "partSellPrice=" + partSellPrice + "]";
+	}
+
+	}
+	

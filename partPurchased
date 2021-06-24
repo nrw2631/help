@@ -1,0 +1,74 @@
+package edu.seminolestate.manageparts;
+
+
+/*
+ * Nick Wetherington
+ * 06/22/2021
+ * Ch 11 Project (Ver 1)
+ * The purpose of this assignment is to use inheritance, overridden methods, and polymorphism. 
+ * In this application you will create a hierarchy of classes modeling a company that produces and sells parts
+ */
+
+
+public class PurchasedPart extends Part {
+	
+	private double handlingCost;
+	private double purchasePrice;
+	private String vendor;
+	
+	public static final String DEFAULT_VENDOR_NAME = "no vendor name";
+	public static final double DEFAULT_PURCHASE_PRICE = 0;
+	public static final double DEFAULT_HANDLING_COST = 0;
+
+	public PurchasedPart (int partID) {
+		super (partID);
+}
+		
+	public PurchasedPart(int id, String desc, double sellPrice, double hCost, double purPrice, String vend)	{
+		super(id, desc, sellPrice);  // call ctor for superclass (Part)
+		this.handlingCost = DEFAULT_HANDLING_COST;
+		this.vendor = DEFAULT_VENDOR_NAME;
+		this.purchasePrice = DEFAULT_PURCHASE_PRICE;
+		this.setPurchasePrice(purchasePrice);
+		this.setVendor(vendor);
+		this.setHandlingCost(handlingCost);
+	}
+	
+	@Override
+	public double getTotalCost(){
+		return super.getTotalCost() + purchasePrice + handlingCost;
+	}
+	
+	public double getHandlingCost() {
+		return handlingCost;
+	}
+
+	public void setHandlingCost(double newHandlingCost) {
+		handlingCost = newHandlingCost;
+	}
+
+	public double getPurchasePrice() {
+		return purchasePrice;
+	}
+
+	public void setPurchasePrice(double newPurchasePrice) {
+		if ( newPurchasePrice >=0 )
+		purchasePrice = newPurchasePrice;
+	}
+
+	public String getVendor() {
+		return vendor;
+	}
+
+	public void setVendor(String Newvendor) {
+		if (Newvendor != null && Newvendor.length() > 0)
+		vendor = Newvendor;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "[purchasePrice=" + purchasePrice + "," + "vendor="+ vendor 
+				+ "," + "handlingCost=" + handlingCost + "]";
+	}
+
+}

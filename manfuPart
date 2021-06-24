@@ -1,0 +1,59 @@
+package edu.seminolestate.manageparts;
+
+
+/*
+ * Nick Wetherington
+ * 06/22/2021
+ * Ch 11 Project (Ver 1)
+ * The purpose of this assignment is to use inheritance, overridden methods, and polymorphism. 
+ * In this application you will create a hierarchy of classes modeling a company that produces and sells parts
+ */
+
+
+public class ManufacturedPart extends Part {
+	
+	private double laborCost;
+	private double materialCost;
+	public static final double DEFAULT_LABOR_COST = 0;
+	public static final double DEFAULT_MATERIAL_COST = 0;
+
+	public ManufacturedPart (int partID) {
+		super (partID);
+}
+	
+	public ManufacturedPart(int id, String desc, double sellPrice, double lCost, double mCost) { 
+		super(id, desc, sellPrice);  
+		this.laborCost = DEFAULT_LABOR_COST;
+		this.materialCost = DEFAULT_MATERIAL_COST;
+		this.setLaborCost(lCost);
+		this.setMaterialCost(mCost);
+	}
+	
+	@Override
+	public double getTotalCost(){
+		return super.getTotalCost() + laborCost + materialCost;
+	}
+
+	public double getLaborCost() {
+		return laborCost;
+	}
+
+	public void setLaborCost(double newLaborCost) {
+		if ( newLaborCost >= 0 )
+		laborCost = newLaborCost;
+	}
+
+	public double getMaterialCost() {
+		return materialCost;
+	}
+
+	public void setMaterialCost(double newMaterialCost) {
+		if ( newMaterialCost >= 0 )
+		materialCost = newMaterialCost;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "[laborCost=" + laborCost + "," + "materialCost="+ materialCost + "]";
+	}
+}
